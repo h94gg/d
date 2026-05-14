@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity-Based Costing (ABC) Quiz</title>
+<style>
+/* 1. إعدادات الصفحة والخلفية الاحترافية /
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 15px; background: #0F172A; direction: ltr; }
+.container { max-width: 800px; margin: auto; padding-bottom: 100px; }
+#scoreBox { background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; padding: 15px; text-align: center; font-size: 20px; position: sticky; top: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;border-bottom-left-radius: 20px;
+border-top-right-radius: 20px; }
+.question-card { background: white; padding: 20px; margin-bottom: 20px; box-shadow:
+/ 1. ظل من اليمين (يميل للأزرق الفاتح #00c6ff) */
+12px 12px 20px -10px rgba(0, 198, 255, 0.7),
+
+/* 2. ظل من اليسار (يميل للأزرق الغامق #0072ff) */
+-12px 12px 20px -10px rgba(0, 114, 255, 0.7),
+
+/* 3. ظل سفلي مدمج ليعطي عمق وتجسيم 3D */
+0px 20px 30px -10px rgba(0, 114, 255, 0.4);border-bottom-left-radius: 20px;
+border-top-right-radius: 20px;}
+.q-text { font-size: 18px; font-weight: 600; color: #1c1e21; margin-bottom: 15px; }
+.translate-btn { background: #34a853; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
+.translation-area { display: none; background: #e8f5e9; padding: 10px; border-radius: 8px; margin-bottom: 15px; direction: rtl; text-align: right; border-right: 4px solid #34a853; }
+.option { width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #dadce0; border-radius: 8px; background: #fff; text-align: left; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; }
+.option:hover { background: #f8f9fa; border-color: #1a73e8; }
+.ar-opt { display: none; font-size: 14px; color: #5f6368; margin-top: 4px; direction: rtl; text-align: right; }
+.correct { background: #d4edda !important; border-color: #28a745 !important; }
+.wrong { background: #f8d7da !important; border-color: #dc3545 !important; }
+.result-msg { margin-top: 15px; font-weight: bold; direction: rtl; text-align: right; }
+h2 { text-align: center; color: #1a73e8; }
+.footer {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+background: linear-gradient(135deg, #0072ff, #00c6ff);
+color: white;
+text-align: center;
+padding: 12px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.footer a { text-decoration: none; color: white; }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div id="scoreBox">النتيجة: 0 / 11</div>
+<h2>الاختبار الشامل (نظام التكاليف المبني على أساس الأنشطة - ABC)</h2>
+
+<div id="quiz-container">
+</div>
+</div>
+
+<div class="footer">
+Developed by <a href="https://www.instagram.com/h94g/" target="_blank">حيدر الخفاجي</a>
+</div>
+
+<script>
+const questions = [
+{ q: "What is the Activity-Based Costing (ABC) system?", arQ: "ما هو نظام التكاليف المبني على أساس الأنشطة (ABC)؟", options: [
+{ en: "A system that focuses on products as the primary cost objective.", ar: "نظام يركز على المنتجات كهدف أساسي للتكلفة.", correct: false },
+{ en: "A system that focuses on activities as the primary cost objective.", ar: "نظام يركز على الأنشطة كهدف أساسي للتكلفة.", correct: true },
+{ en: "A system that focuses on resources as the primary cost objective.", ar: "نظام يركز على الموارد كهدف أساسي للتكلفة.", correct: false },
+{ en: "A system that focuses only on indirect costs.", ar: "نظام يركز فقط على التكاليف غير المباشرة.", correct: false }
+ ]},
+{ q: "What is the main benefit of the Activity-Based Costing (ABC) system?", arQ: "ما هي الفائدة الرئيسية لنظام التكاليف المبني على أساس الأنشطة (ABC)؟", options: [
+{ en: "Reducing direct costs.", ar: "تقليل التكاليف المباشرة.", correct: false },
+{ en: "Reducing indirect costs.", ar: "تقليل التكاليف غير المباشرة.", correct: false },
+{ en: "Improving the accuracy of cost allocation to products.", ar: "تحسين دقة تخصيص التكلفة للمنتجات.", correct: true },
+{ en: "Reducing the number of activities.", ar: "تقليل عدد الأنشطة.", correct: false }
+ ]},
+{ q: "How can the Activity-Based Costing (ABC) system overcome the problems associated with indirect costs?", arQ: "كيف يمكن لنظام التكاليف المبني على أساس الأنشطة التغلب على المشاكل المرتبطة بالتكاليف غير المباشرة؟", options: [
+{ en: "Through the use of cost drivers.", ar: "من خلال استخدام مسببات التكلفة.", correct: true },
+{ en: "By reducing indirect costs.", ar: "عن طريق تقليل التكاليف غير المباشرة.", correct: false },
+{ en: "By increasing direct costs.", ar: "عن طريق زيادة التكاليف المباشرة.", correct: false },
+{ en: "By reducing the number of activities.", ar: "عن طريق تقليل عدد الأنشطة.", correct: false }
+ ]},
+{ q: "What are cost drivers in the Activity-Based Costing (ABC) system?", arQ: "ما هي مسببات التكلفة في نظام التكاليف المبني على أساس الأنشطة؟", options: [
+{ en: "The link between products and costs.", ar: "الرابط بين المنتجات والتكاليف.", correct: false },
+{ en: "The link between activities and products.", ar: "الرابط بين الأنشطة والمنتجات.", correct: true },
+{ en: "The link between resources and costs.", ar: "الرابط بين الموارد والتكاليف.", correct: false },
+{ en: "The link between direct and indirect costs.", ar: "الرابط بين التكاليف المباشرة وغير المباشرة.", correct: false }
+ ]},
+{ q: "What is the benefit of using the Activity-Based Costing (ABC) system?", arQ: "ما هي فائدة استخدام نظام التكاليف المبني على أساس الأنشطة؟", options: [
+{ en: "Improving cost accuracy.", ar: "تحسين دقة التكاليف.", correct: true },
+{ en: "Reducing costs.", ar: "تقليل التكاليف.", correct: false },
+{ en: "Increasing productivity.", ar: "زيادة الإنتاجية.", correct: false },
+{ en: "All of the above.", ar: "كل ما سبق.", correct: false }
+ ]},
+{ q: "What is the basic principle of Activity-Based Costing (ABC) system?", arQ: "ما هو المبدأ الأساسي لنظام التكاليف المبني على أساس الأنشطة؟", options: [
+{ en: "a) Products consume resources.", ar: "أ) المنتجات تستهلك الموارد.", correct: false },
+{ en: "b) Activities consume resources.", ar: "ب) الأنشطة تستهلك الموارد.", correct: true },
+{ en: "c) Resources consume activities.", ar: "ج) الموارد تستهلك الأنشطة.", correct: false },
+{ en: "d) All answers are wrong.", ar: "د) جميع الإجابات خاطئة.", correct: false }
+ ]},
+{ q: "How are costs allocated to products in the ABC system?", arQ: "كيف يتم تخصيص التكاليف للمنتجات في نظام ABC؟", options: [
+{ en: "a) Based on each product's consumption of resources", ar: "أ) بناءً على استهلاك كل منتج للموارد", correct: false },
+{ en: "b) Based on each product's consumption of activities", ar: "ب) بناءً على استهلاك كل منتج للأنشطة", correct: true },
+{ en: "c) Based on each product's consumption of costs", ar: "ج) بناءً على استهلاك كل منتج للتكاليف", correct: false },
+{ en: "d) Based on each product's consumption of revenues", ar: "د) بناءً على استهلاك كل منتج للإيرادات", correct: false }
+ ]},
+{ q: "How are costs determined in the ABC system?", arQ: "كيف يتم تحديد التكاليف في نظام ABC؟", options: [
+{ en: "a) Costs are determined based on activities.", ar: "أ) يتم تحديد التكاليف بناءً على الأنشطة.", correct: true },
+{ en: "b) Costs are determined based on products.", ar: "ب) يتم تحديد التكاليف بناءً على المنتجات.", correct: false },
+{ en: "c) Costs are determined based on resources.", ar: "ج) يتم تحديد التكاليف بناءً على الموارد.", correct: false },
+{ en: "d) Costs are determined based on revenues.", ar: "د) يتم تحديد التكاليف بناءً على الإيرادات.", correct: false }
+ ]},
+{ q: "What are the cost drivers in an Activity-Based Costing (ABC) system?", arQ: "ما هي مسببات التكلفة في نظام التكاليف المبني على أساس الأنشطة (ABC)؟", options: [
+{ en: "a) They are the link between products and costs.", ar: "أ) هي الرابط بين المنتجات والتكاليف.", correct: false },
+{ en: "b) They are the link between activities and products.", ar: "ب) هي الرابط بين الأنشطة والمنتجات.", correct: true },
+{ en: "c) They are the link between resources and costs.", ar: "ج) هي الرابط بين الموارد والتكاليف.", correct: false },
+{ en: "d) All answers are wrong.", ar: "د) جميع الإجابات خاطئة.", correct: false }
+ ]},
+{ q: "How do traditional systems differ from Activity-Based Costing (ABC) systems in terms of cost allocation?", arQ: "كيف تختلف الأنظمة التقليدية عن أنظمة ABC من حيث تخصيص التكلفة؟", options: [
+{ en: "a) Traditional systems use a single cost pool for direct costs.", ar: "أ) تستخدم الأنظمة التقليدية مجمع تكلفة واحد للتكاليف المباشرة.", correct: false },
+{ en: "b) Traditional systems use multiple company-wide cost pools.", ar: "ب) تستخدم الأنظمة التقليدية مجمعات تكلفة متعددة على مستوى الشركة.", correct: false },
+{ en: "c) Activity-Based Costing (ABC) uses a single cost pool for direct costs.", ar: "ج) يستخدم نظام ABC مجمع تكلفة واحد للتكاليف المباشرة.", correct: false },
+{ en: "d) Activity-Based Costing (ABC) uses multiple company-wide cost pools to determine the cost of each activity.", ar: "د) يستخدم نظام ABC مجمعات تكلفة متعددة على مستوى الشركة لتحديد تكلفة كل نشاط.", correct: true }
+ ]},
+{ q: "What is the benefit of using multiple company-wide cost pools in an Activity-Based Costing (ABC) system?", arQ: "ما هي فائدة استخدام مجمعات تكلفة متعددة على مستوى الشركة في نظام ABC؟", options: [
+{ en: "a) Reduction of indirect costs.", ar: "أ) تقليل التكاليف غير المباشرة.", correct: false },
+{ en: "b) Improvement in the accuracy of cost allocation to products.", ar: "ب) تحسين دقة تخصيص التكلفة للمنتجات.", correct: true },
+{ en: "c) Increase in productivity.", ar: "ج) زيادة الإنتاجية.", correct: false },
+{ en: "d) Simplification of calculating the cost per unit of activity.", ar: "د) تبسيط حساب التكلفة لكل وحدة نشاط.", correct: false }
+ ]}
+];
+
+let score = 0;
+const container = document.getElementById('quiz-container');
+
+function renderQuiz() {
+questions.forEach((q, index) => {
+const card = document.createElement('div');
+card.className = 'question-card';
+card.innerHTML = &lt;button class="translate-btn" onclick="toggleTranslation(${index})">Translate / ترجمة</button>
+<div id="trans-${index}" class="translation-area"&gt;&lt;strong&gt;السؤال:&lt;/strong&gt; ${q.arQ}</div>
+<div class="q-text">${index + 1}. ${q.q}</div>
+<div id="options-${index}"&gt; ${q.options.map((opt, optIdx) => &lt;button class="option" onclick="checkAnswer(${index}, {opt.correct})">
+<span>{opt.ar}</span>
+</button>
+).join('')} &lt;/div&gt; &lt;div id="result-${index}" class="result-msg"></div>
+`;
+container.appendChild(card);
+});
+}
+
+window.checkAnswer = function(qIdx, optIdx, btn, isCorrect) {
+const parent = document.getElementById(options-${qIdx}`);
+if (parent.dataset.answered === "true") return;
+parent.dataset.answered = "true";
+
+const allOptions = parent.querySelectorAll('.option');
+const resultMsg = document.getElementById(result-${qIdx}`);
+const correctOpt = questions[qIdx].options.find(o => o.correct);
+
+allOptions.forEach(opt => {
+opt.querySelector('.ar-opt').style.display = 'block';
+});
+
+if (isCorrect) {
+score++;
+btn.classList.add('correct');
+resultMsg.innerHTML = <span style="color: green;"&gt;✅ إجابة صحيحة:${correctOpt.ar}</span>; } else { btn.classList.add('wrong'); allOptions.forEach(opt =&gt; { if (opt.innerHTML.includes(correctOpt.en)) opt.classList.add('correct'); }); resultMsg.innerHTML =<span style="color: red;">❌ إجابة خاطئة! الصحيح هو: {correctOpt.ar})</span>; } document.getElementById('scoreBox').innerText =النتيجة: {questions.length}`;
+};
+
+window.toggleTranslation = function(index) {
+const area = document.getElementById(trans-${index}); const optionsAr = document.querySelectorAll(#options-${index} .ar-opt);
+
+if (area.style.display === 'block') {
+area.style.display = 'none';
+optionsAr.forEach(o => o.style.display = 'none');
+} else {
+area.style.display = 'block';
+optionsAr.forEach(o => o.style.display = 'block');
+}
+};
+
+renderQuiz();
+</script>
+</body>
+</html>
