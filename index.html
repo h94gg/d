@@ -5,21 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Activity-Based Costing (ABC) Quiz</title>
 <style>
-    /* 1. إعدادات الصفحة والخلفية الاحترافية */
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 15px; background: #0F172A; direction: ltr; }
     .container { max-width: 800px; margin: auto; padding-bottom: 100px; }
-    #scoreBox { background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; padding: 15px; text-align: center; font-size: 20px; position: sticky; top: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;border-bottom-left-radius: 20px;
-border-top-right-radius: 20px; }
-    .question-card { background: white; padding: 20px; margin-bottom: 20px; box-shadow: 
-        /* 1. ظل من اليمين (يميل للأزرق الفاتح #00c6ff) */
-        12px 12px 20px -10px rgba(0, 198, 255, 0.7),
-        
-        /* 2. ظل من اليسار (يميل للأزرق الغامق #0072ff) */
-        -12px 12px 20px -10px rgba(0, 114, 255, 0.7),
-        
-        /* 3. ظل سفلي مدمج ليعطي عمق وتجسيم 3D */
-        0px 20px 30px -10px rgba(0, 114, 255, 0.4);border-bottom-left-radius: 20px;
-border-top-right-radius: 20px;}
+    #scoreBox { background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; padding: 15px; text-align: center; font-size: 20px; position: sticky; top: 10px; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px;border-bottom-left-radius: 20px; border-top-right-radius: 20px; }
+    .question-card { background: white; padding: 20px; margin-bottom: 20px; box-shadow: 12px 12px 20px -10px rgba(0, 198, 255, 0.7), -12px 12px 20px -10px rgba(0, 114, 255, 0.7), 0px 20px 30px -10px rgba(0, 114, 255, 0.4);border-bottom-left-radius: 20px; border-top-right-radius: 20px;}
     .q-text { font-size: 18px; font-weight: 600; color: #1c1e21; margin-bottom: 15px; }
     .translate-btn { background: #34a853; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; margin-bottom: 10px; }
     .translation-area { display: none; background: #e8f5e9; padding: 10px; border-radius: 8px; margin-bottom: 15px; direction: rtl; text-align: right; border-right: 4px solid #34a853; }
@@ -28,28 +17,17 @@ border-top-right-radius: 20px;}
     .ar-opt { display: none; font-size: 14px; color: #5f6368; margin-top: 4px; direction: rtl; text-align: right; }
     .correct { background: #d4edda !important; border-color: #28a745 !important; }
     .wrong { background: #f8d7da !important; border-color: #dc3545 !important; }
-    .result-msg { margin-top: 15px; font-weight: bold; direction: rtl; text-align: right; }
+    .result-msg { margin-top: 15px; font-weight: bold; }
     h2 { text-align: center; color: #1a73e8; }
-    .footer {
-position: fixed;
-bottom: 0;
-left: 0;
-width: 100%;
-background: linear-gradient(135deg, #0072ff, #00c6ff);
-color: white;
-text-align: center;
-padding: 12px;
-border-top-left-radius: 20px;
-border-top-right-radius: 20px;
-}
-.footer a { text-decoration: none; color: white; }
+    .footer { position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(135deg, #0072ff, #00c6ff); color: white; text-align: center; padding: 12px; border-top-left-radius: 20px; border-top-right-radius: 20px; }
+    .footer a { text-decoration: none; color: white; }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <div id="scoreBox">النتيجة: 0 / 11</div>
-    <h2> تكاليف </h2>
+    <div id="scoreBox">النتيجة: 0 / 14</div>
+    <h2>الاختبار الشامل (نظام التكاليف المبني على أساس الأنشطة - ABC)</h2>
 
     <div id="quiz-container">
         </div>
@@ -126,6 +104,24 @@ const questions = [
         { en: "b) Improvement in the accuracy of cost allocation to products.", ar: "ب) تحسين دقة تخصيص التكلفة للمنتجات.", correct: true },
         { en: "c) Increase in productivity.", ar: "ج) زيادة الإنتاجية.", correct: false },
         { en: "d) Simplification of calculating the cost per unit of activity.", ar: "د) تبسيط حساب التكلفة لكل وحدة نشاط.", correct: false }
+    ]},
+    { q: "What means the costing system based on activities?", arQ: "ماذا يعني نظام التكاليف المبني على الأنشطة؟", options: [
+        { en: "a- ABB", ar: "الموازنة المبنية على الأنشطة", correct: false },
+        { en: "b- ABM", ar: "الإدارة المبنية على الأنشطة", correct: false },
+        { en: "c- ABC", ar: "التكاليف المبنية على الأنشطة", correct: true },
+        { en: "d- JIT", ar: "الإنتاج في الوقت المناسب", correct: false }
+    ]},
+    { q: "What means management based on activities?", arQ: "ماذا تعني الإدارة المبنية على الأنشطة؟", options: [
+        { en: "a- ABB", ar: "الموازنة المبنية على الأنشطة", correct: false },
+        { en: "b- JIT", ar: "الإنتاج في الوقت المناسب", correct: false },
+        { en: "c- ABC", ar: "التكاليف المبنية على الأنشطة", correct: false },
+        { en: "d- ABM", ar: "الإدارة المبنية على الأنشطة", correct: true }
+    ]},
+    { q: "What means budgeting based on activities?", arQ: "ماذا تعني الموازنة المبنية على الأنشطة؟", options: [
+        { en: "a- ABB", ar: "الموازنة المبنية على الأنشطة", correct: true },
+        { en: "b- JIT", ar: "الإنتاج في الوقت المناسب", correct: false },
+        { en: "c- ABC", ar: "التكاليف المبنية على الأنشطة", correct: false },
+        { en: "d- ABM", ar: "الإدارة المبنية على الأنشطة", correct: false }
     ]}
 ];
 
@@ -170,13 +166,26 @@ window.checkAnswer = function(qIdx, optIdx, btn, isCorrect) {
     if (isCorrect) {
         score++;
         btn.classList.add('correct');
-        resultMsg.innerHTML = `<span style="color: green;">✅ إجابة صحيحة: ${correctOpt.ar}</span>`;
+        resultMsg.innerHTML = `<div style="text-align: right; direction: rtl;"><span style="color: green; font-size: 16px;">✅ إجابة صحيحة!</span></div>`;
     } else {
         btn.classList.add('wrong');
         allOptions.forEach(opt => {
              if (opt.innerHTML.includes(correctOpt.en)) opt.classList.add('correct');
         });
-        resultMsg.innerHTML = `<span style="color: red;">❌ إجابة خاطئة! الصحيح هو: ${correctOpt.en} (${correctOpt.ar})</span>`;
+        
+        resultMsg.innerHTML = `
+            <div style="direction: rtl; text-align: right; margin-bottom: 8px;">
+                <span style="color: red; font-weight: bold; font-size: 16px;">❌ إجابة خاطئة! الإجابة الصحيحة هي:</span>
+            </div>
+            <div style="background-color: #d4edda; color: #155724; padding: 12px; border-radius: 8px; border: 1px solid #c3e6cb; margin-top: 10px;">
+                <div style="direction: ltr; text-align: left; margin-bottom: 6px; font-size: 15px; border-bottom: 1px solid #b1dfbb; padding-bottom: 6px;">
+                    <strong>EN:</strong> ${correctOpt.en}
+                </div>
+                <div style="direction: rtl; text-align: right; font-size: 15px; padding-top: 6px;">
+                    <strong>AR:</strong> ${correctOpt.ar}
+                </div>
+            </div>
+        `;
     }
     document.getElementById('scoreBox').innerText = `النتيجة: ${score} / ${questions.length}`;
 };
@@ -198,4 +207,3 @@ renderQuiz();
 </script>
 </body>
 </html>
-
